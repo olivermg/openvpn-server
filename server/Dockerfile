@@ -1,7 +1,5 @@
-FROM alpine
-RUN apk add openvpn && \
-	mkdir -p /dev/net && \
-	mknod /dev/net/tun c 10 200
+FROM alpine:3.9
+RUN apk add openvpn
 EXPOSE 1194/udp
-CMD openvpn --config /etc/openvpn/server.conf
-
+COPY ./entrypoint.sh /entrypoint.sh
+CMD /entrypoint.sh
