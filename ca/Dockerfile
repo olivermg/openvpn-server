@@ -1,3 +1,3 @@
 FROM alpine:3.9
-RUN apk add easy-rsa
+RUN apk add --update easy-rsa
 CMD /bin/sh
