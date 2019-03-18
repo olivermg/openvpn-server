@@ -2,4 +2,15 @@ version: '3.3'
 
 services:
   openvpn:
-
+    build: ./server
+    volumes:
+      - ./server/server.conf:/etc/openvpn/server.conf:ro
+      - ./volumes/certs/pki/ca.crt:/etc/openvpn/pki/ca.crt:ro
+      - ./volumes/certs/pki/dh.pem:/etc/openvpn/pki/dh.pem:ro
+      - ./volumes/certs/pki/private/server.key:/etc/openvpn/pki/server.key:ro
+      - ./volumes/certs/pki/issued/server.crt:/etc/openvpn/pki/server.crt:ro
+    ports:
+      - "1194:1194/udp"
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
