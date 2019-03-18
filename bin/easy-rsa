@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+BASEPATH=$(realpath $(dirname $0)/../)
+
+docker build -t openvpn-server_ca ca/ && \
+    { echo; docker run -it --rm -v $BASEPATH/volumes/certs:/certs:Z -w /certs openvpn-server_ca /usr/share/easy-rsa/easyrsa "$@"; }
