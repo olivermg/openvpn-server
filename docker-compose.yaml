@@ -3,6 +3,9 @@ version: '3.3'
 services:
   openvpn:
     build: ./server
+    environment:
+      - VPN_IPRANGE
+      - LOCAL_IPS
     volumes:
       - ./server/server.conf:/etc/openvpn/server.conf:Z,ro
       - ./volumes/certs/pki/ca.crt:/etc/openvpn/pki/ca.crt:Z,ro
