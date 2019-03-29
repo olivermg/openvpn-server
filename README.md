@@ -51,7 +51,7 @@ You might want to adjust `./server/server.conf`, e.g. for adding routes etc.
 All necessary files for the VPN server (namely `./server/server.conf`, `ca.crt`, 
 `dh.pem`, `private/serverX.key` and `issued/serverX.crt`) will be mounted into the
 OpenVPN container. You may need to
-adjust `docker-componse.yaml` regarding the latter two files, because those filenames
+adjust `docker-compose.yaml` regarding the latter two files, because those filenames
 depend upon the server name you've passed into the invocation for creating your server
 certificate (see above), thus
 
